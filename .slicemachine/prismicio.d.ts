@@ -65,6 +65,17 @@ interface PostDocumentData {
      *
      */
     content: prismicT.RichTextField;
+    /**
+     * Category field in *Post*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: post.category
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    category: prismicT.RelationField<"postcategory">;
 }
 /**
  * Post document from Prismic
@@ -76,12 +87,24 @@ interface PostDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type PostDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<PostDocumentData>, "post", Lang>;
-export type AllDocumentTypes = HomepageDocument | PostDocument;
+/** Content for PostCategory documents */
+type PostcategoryDocumentData = Record<string, never>;
+/**
+ * PostCategory document from Prismic
+ *
+ * - **API ID**: `postcategory`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PostcategoryDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<PostcategoryDocumentData>, "postcategory", Lang>;
+export type AllDocumentTypes = HomepageDocument | PostDocument | PostcategoryDocument;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomepageDocumentData, HomepageDocument, PostDocumentData, PostDocument, AllDocumentTypes };
+        export type { HomepageDocumentData, HomepageDocument, PostDocumentData, PostDocument, PostcategoryDocumentData, PostcategoryDocument, AllDocumentTypes };
     }
 }

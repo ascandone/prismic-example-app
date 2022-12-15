@@ -11,13 +11,23 @@
   "lang": "en-us",
   "alternate_languages": [],
   "data": {
-    "title": "straight",
+    "title": "television",
     "content": [
       {
         "type": "paragraph",
-        "text": "Ipsum magna do in in proident ut laboris cupidatat deserunt est excepteur ipsum pariatur id veniam. Do enim magna ullamco Lorem aliquip nulla esse ad deserunt pariatur dolore sit culpa. Nulla reprehenderit sit proident dolor sint sint id ipsum et magna ipsum ea exercitation est.",
+        "text": "Lorem ad Lorem mollit dolore proident irure dolore. Consequat elit sint eiusmod ut Lorem. Ex enim cupidatat adipisicing excepteur aliqua do mollit ullamco cillum irure ut irure elit.",
         "spans": []
       }
-    ]
+    ],
+    "category": {
+      "id": "mock_document_id",
+      "link_type": "Document",
+      "type": "postcategory",
+      "tags": [],
+      "lang": "en-us",
+      "slug": null,
+      "first_publication_date": "1970-01-01T00:00:01+0000",
+      "last_publication_date": "1970-01-01T01:00:00+0000"
+    }
   }
 }

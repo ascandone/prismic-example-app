@@ -4,6 +4,10 @@ import sm from "../sm.json";
 export const client = prismic.createClient(sm.apiEndpoint, {
   routes: [
     { type: "homepage", path: "/" },
-    { type: "post", path: "/post/:uid" },
+    {
+      type: "post",
+      path: "/post/:category/:uid",
+      resolvers: { category: "category" },
+    },
   ],
 });

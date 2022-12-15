@@ -2,8 +2,8 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { FC } from "react";
 import { PrismicRichText } from "@prismicio/react";
 import { Content } from "@prismicio/client";
-import { client } from "../../prismicClient";
-import { assertNotNull } from "../../utils";
+import { client } from "../../../prismicClient";
+import { assertNotNull } from "../../../utils";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const documents = await client.getAllByType("post");
