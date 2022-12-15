@@ -1,4 +1,9 @@
 import * as prismic from "@prismicio/client";
-import { apiEndpoint } from "../sm.json";
+import sm from "../sm.json";
 
-export const client = prismic.createClient(apiEndpoint);
+export const client = prismic.createClient(sm.apiEndpoint, {
+  routes: [
+    { type: "homepage", path: "/" },
+    { type: "post", path: "/post/:uid" },
+  ],
+});

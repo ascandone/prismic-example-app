@@ -41,12 +41,47 @@ interface HomepageDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type HomepageDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<HomepageDocumentData>, "homepage", Lang>;
-export type AllDocumentTypes = HomepageDocument;
+/** Content for Post documents */
+interface PostDocumentData {
+    /**
+     * Title field in *Post*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: post.title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Content field in *Post*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: post.content
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    content: prismicT.RichTextField;
+}
+/**
+ * Post document from Prismic
+ *
+ * - **API ID**: `post`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PostDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<PostDocumentData>, "post", Lang>;
+export type AllDocumentTypes = HomepageDocument | PostDocument;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { HomepageDocumentData, HomepageDocument, AllDocumentTypes };
+        export type { HomepageDocumentData, HomepageDocument, PostDocumentData, PostDocument, AllDocumentTypes };
     }
 }
